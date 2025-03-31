@@ -1,5 +1,8 @@
 # Didaktische Handreichung:
 
+Dies ist eine neue Zeile
+
+
 ![demo bild](media/demo.png "dies ist der titel")
 
 <div>
