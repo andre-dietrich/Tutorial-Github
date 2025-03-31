@@ -1,6 +1,6 @@
 # Didaktische Handreichung:
 
-Dies ist eine neue Zeile
+Dies ist eine neue Zellle
 
 
 ![demo bild](media/demo.png "dies ist der titel")
