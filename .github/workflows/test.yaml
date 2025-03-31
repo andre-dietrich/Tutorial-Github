@@ -1,0 +1,64 @@
+name: Spell Check
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  cspell-spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install cspell
+        run: npm install -g cspell
+      - name: Run cspell on markdown files
+        run: npx cspell --locale de-DE --show-suggestions "**/*.md"
+
+  write-good:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install write-good
+        run: npm install -g write-good
+      - name: Run write-good on Markdown files
+        run: npx write-good *.md
+
+  alex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install alex
+        run: npm install -g alex
+      - name: Run alex on Markdown files
+        run: npx alex *.md
+
+  proselint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install proselint
+        run: |
+          npm install -g proselint
+          pip install proselint          
+      - name: Run proselint on Markdown files
+        run: npx proselint *.md
